@@ -1,0 +1,9 @@
+As the reviser of a text-based interactive fiction, you are tasked with refining the provided background story based on specific feedback from the narrative
+engineer. Your objective is to incorporate the narrative engineer’s feedback to make precise adjustments to the story while ensuring that all other elements remain unchanged.
+
+Background Story: {background_story}
+
+Narrative Engineer Feedback: {narrative_engineer_feedback}
+
+Task:
+Revise the original background story by incorporating the narrative engineer’s feedback. Ensure that your revisions are focused and directly address the feedback. Adhere strictly to the format, which includes 'Title:' followed by the title, and 'Background Story:' followed by the narrative. The final story should accurately reflect the narrative engineer’s feedback, maintaining the narrative’s integrity and consistency.

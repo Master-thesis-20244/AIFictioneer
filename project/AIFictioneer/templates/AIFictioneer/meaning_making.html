@@ -1,0 +1,182 @@
+{% extends "AIFictioneer/index.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'AIFictioneer/meaning_making_styles.css' %}">
+
+<form id="meaningmaking-form" action="{% url 'meaning_making' %}" method="post">
+    {% csrf_token %}
+    <div class="meaningmaking-section">
+        <h2>Meaning Making Stage</h2>
+        <p>Refine the ideas generated in the Ideation stage and start developing your protostory.</p>
+
+        <!-- Background Story -->
+        <div class="background-story-section">
+            <h3>Background Story (From Ideation)</h3>
+            <div id="background-story-output" class="content-output" contenteditable="true">
+                {% if generated_ideas %}
+                    {{ generated_ideas|safe }}
+                {% else %}
+                    {{ current_background_story|safe }}
+                {% endif %}
+            </div>
+            <!-- user options -->
+            <div class="user-options">
+                <label for="number_of_events">Number of Events:</label>
+                <input type="number" id="number_of_events" name="number_of_events" min="1" placeholder="e.g., 3" value="{{ number_of_events }}">
+
+                <label for="number_of_endings">Number of Endings:</label>
+                <input type="number" id="number_of_endings" name="number_of_endings" min="1" placeholder="e.g., 2" value="{{ number_of_endings }}">
+
+                <label for="number_of_characters">Number of Characters:</label>
+                <input type="number" id="number_of_characters" name="number_of_characters" min="1" placeholder="e.g., 2" value="{{ number_of_characters }}">
+                
+                <label for="number_of_locations">Number of Locations:</label>
+                <input type="number" id="number_of_locations" name="number_of_locations" min="1" placeholder="e.g., 5" value="{{ number_of_locations }}">
+
+                <label for="number_of_interactive_objects">Number of Interactive Objects:</label>
+                <input type="number" id="number_of_interactive_objects" name="number_of_interactive_objects" min="1" placeholder="e.g., 10" value="{{ number_of_interactive_objects }}">
+            </div>
+            <textarea name="narrative_engineer_input" class="input-area" placeholder="Please Enter your requirements for the narrative">{{ narrative_engineer_input }}</textarea>                      
+            <button type="submit" name="action" value="generate">Generate Protostory</button>
+        </div>
+
+        <!-- Container for Protostory and JSON Crack visualization-->
+        <div class="narrative-and-json-container">
+            <div class="generated-narrative-section">
+                <h3>Generated Protostory</h3>
+                <div class="content-output" contenteditable="true">
+                    {% if generated_narrative %}
+                        <p>{{ generated_narrative|safe }}</p>
+                    {% else %}
+                        <p>No protostory generated yet.</p>
+                    {% endif %}
+                </div>
+                <textarea name="narrative_engineer_feedback" class="input-area" placeholder="Provide your feedback..."></textarea>
+                <button type="submit" name="action" value="refine">Refine Protostory</button>
+                <button type="submit" name="action" value="analyze_coherence">Analyze Coherence</button>
+            </div>
+
+            <div class="json-crack-visualization-section">
+                <h3>Visualize Protostory</h3>
+                <iframe id="jsoncrackEmbed" src="https://jsoncrack.com/widget" style="width:100%; height:100%; border:none;"></iframe>
+                <button type="button" onclick="sendToEmbed()">Show Protostory Structure</button>
+                <button type="button" onclick="toggleFullScreen()">Toggle Full Screen</button>
+                <button type="button" onclick="proceedToProduction()">Proceed to Interction</button>
+            </div>
+
+            <input type="hidden" name="background_story_content" id="background_story_content" value="">
+            <input type="hidden" name="generated_narrative" id="generated_narrative" value="">
+        </div>
+
+        <!-- Coherence Analysis Suggestions -->
+        <div class="suggestions-section">
+            <h4>Protostory Improvement Suggestions</h4>
+            <div id="suggestions-placeholder">
+                {% for suggestion in suggestions %}
+                    <div class="suggestion-box">
+                        <p><strong>Type:</strong> {{ suggestion.Type }}</p>
+                        <p><strong>Description:</strong> {{ suggestion.Description }}</p>
+                        <textarea name="edited_suggestion_{{ forloop.counter }}" class="suggestion-text">{{ suggestion.ImprovementSuggestion }}</textarea>
+                        <div class="individual-apply-container">
+                            <button type="button" data-action-value="apply_suggestion_{{ forloop.counter }}" class="apply-suggestion-btn">Apply This Suggestion</button>
+                        </div>
+                        <label class="checkbox-container" style="order: 3;">
+                            <input type="checkbox" name="suggestion_{{ forloop.counter }}" class="suggestion-checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                {% endfor %}
+                <button type="submit" name="action" value="apply_all_selected" class="apply-all-btn">Apply All Selected Suggestions</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form id="interaction-form" action="{% url 'interaction' %}" method="post" style="display:none;">
+    {% csrf_token %}
+    <input type="hidden" name="narrative_content" id="interaction_narrative_content">
+</form>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+    document.getElementById('meaningmaking-form').addEventListener('submit', function(event) {
+        // Transfer content from div to textarea
+        var backgroundStoryContent = document.getElementById('background-story-output').innerText;
+        document.getElementsByName('background_story_content')[0].value = backgroundStoryContent;
+
+        // Capture the narrative_engineer's additional input from the textarea
+        var narrative_engineerInputNarrative = document.getElementsByName('narrative_engineer_input')[0].value;
+
+        // Transfer content for generated_narrative
+        var generatedNarrativeContent = document.querySelector('.generated-narrative-section .content-output').innerText;
+        document.getElementsByName('generated_narrative')[0].value = generatedNarrativeContent;
+
+        // Rest of the submit event handling code
+        var actionValue = event.submitter.value;
+        switch (actionValue) {
+            case 'generate':
+                console.log('Generating interactive narrative with:');
+                console.log('Background Story:', backgroundStoryContent);
+                break;
+            case 'refine':
+                console.log('Applying narrative_engineer feedback...');
+                break;
+            case 'analyze_coherence':
+                console.log('Analyzing narrative coherence...');
+                break;
+            case 'apply_all_selected':
+                console.log('Applying all selected suggestions...');
+                break;
+            case 'proceed_to_interaction':
+                event.preventDefault(); // Prevent the form from submitting normally
+                proceedToProduction(); // Call the function that handles this action
+                break;
+            default:
+                event.preventDefault();
+                console.log('Unknown action');
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.apply-suggestion-btn').forEach(function(button) {
+            button.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent form from submitting immediately
+                // Set the action to apply the specific suggestion
+                var actionValue = button.getAttribute('data-action-value');
+                var hiddenActionInput = document.createElement('input');
+                hiddenActionInput.type = 'hidden';
+                hiddenActionInput.name = 'action';
+                hiddenActionInput.value = actionValue;
+                document.getElementById('meaningmaking-form').appendChild(hiddenActionInput);
+                // Submit the form
+                document.getElementById('meaningmaking-form').submit();
+            });
+        });
+    });
+
+    function sendToEmbed() {
+        const jsonCrackEmbed = document.getElementById("jsoncrackEmbed");
+        const narrativeText = document.querySelector('.generated-narrative-section .content-output').innerText;
+        const options = { theme: "light", direction: "RIGHT" };
+        jsonCrackEmbed.contentWindow.postMessage({ json: narrativeText, options }, "*");
+    }
+
+    function toggleFullScreen() {
+        const elem = document.getElementById("jsoncrackEmbed");
+        if (!document.fullscreenElement) {
+            elem.requestFullscreen().catch(err => {
+                alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+            });
+        } else {
+            document.exitFullscreen();
+        }
+    }
+
+    function proceedToProduction() {
+        var narrativeContent = document.querySelector('.generated-narrative-section .content-output').innerText;
+        document.getElementById('interaction_narrative_content').value = narrativeContent.trim();
+        document.getElementById('interaction-form').submit();
+    }
+</script>
+{% endblock %}

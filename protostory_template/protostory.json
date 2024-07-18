@@ -1,0 +1,110 @@
+{
+  "protostory": {
+    "storySpace": {
+      "title": "{title}",
+      "description": "{description_of_story_space}",
+      "timePeriod": "{time_period}",
+      "culturalContext": "{cultural_context}"
+    },
+    "elements": {
+      "locations": {
+        "description": "Dynamic environments where interactions occur",
+        "list": [
+          {
+            "ID": "{location_id}",
+            "name": "{location_name}",
+            "description": "{location_description}",
+            "interactions": ["{interaction_type1}", "{interaction_type2}"],
+            "objects": ["{object_id1}", "{object_id2}"]
+          }
+        ]
+      },
+      "characters": {
+        "description": "Agents driving the story with dynamic interactions",
+        "list": [
+          {
+            "ID": "{character_id}",
+            "name": "{character_name}",
+            "description": "{character_description}",
+            "traits": ["{trait1}", "{trait2}"],
+            "skills": ["{skill1}", "{skill2}"],
+            "inventory": ["{item1}", "{item2}"],
+            "relationships": ["{character_id_relationship}"],
+            "interactions": ["{interaction_type1}", "{interaction_type2}"],
+            "dialogues": [
+              {
+                "ID": "{dialogue_id}",
+                "spoken_text": "{dialogue_text}",
+                "choices": [
+                  {
+                    "ID": "{choice_id}",
+                    "text": "{choice_text}",
+                    "leadsTo": "{next_dialogue_id}"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "objects": {
+        "description": "Interactive items within the storyspace",
+        "list": [
+          {
+            "ID": "{object_id}",
+            "type": "{object_type}",
+            "name": "{object_name}",
+            "usage": "{usage_description}",
+            "interactions": ["{interaction_type1}", "{interaction_type2}"]
+          }
+        ]
+      },
+      "events": {
+        "description": "Narrative triggers based on user actions",
+        "list": [
+          {
+            "ID": "{event_id}",
+            "description": "{event_description}",
+            "triggers": ["{trigger_id}"],
+            "consequences": ["{consequence_action_id}"]
+          }
+        ]
+      },
+      "choices": {
+        "description": "Decision points that impact narrative progression",
+        "list": [
+          {
+            "ID": "{choice_id}",
+            "text": "{choice_text}",
+            "consequences": "{consequence_action_id}"
+          }
+        ]
+      },
+      "endings": {
+        "description": "Possible conclusions based on narrative choices",
+        "list": [
+          {
+            "ID": "{ending_id}",
+            "type": "{ending_type}",
+            "condition": "{ending_condition}",
+            "results": "{ending_result}"
+          }
+        ]
+      }
+    },
+    "interactionTypes": {
+      "{interaction_type1}": "{interaction_description1}",
+      "{interaction_type2}": "{interaction_description2}"
+    },
+    "rulesEngine": {
+      "description": "Dynamic rule application for narrative consistency",
+      "rules": [
+        {
+          "ruleID": "{rule_id}",
+          "condition": "{trigger_id}",
+          "action": "{rule_action}"
+        }
+      ]
+    }
+  }
+}

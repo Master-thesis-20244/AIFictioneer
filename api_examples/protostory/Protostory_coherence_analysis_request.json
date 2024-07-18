@@ -1,0 +1,368 @@
+{
+  "protostory": {
+    "protostory": {
+        "storySpace": {
+            "title": "Metamorphosis",
+            "description": "Set in an unassuming town in the early 1920s within an unknown Central European country, this narrative explores the disintegration of the Samsa family after Gregor Samsa's transformation into a monstrous insect-like creature. The story delves into themes of humanity, monstrosity, and societal norms.",
+            "timePeriod": "Early 1920s",
+            "culturalContext": "Societal norms and appearances are of utmost importance in an unknown Central European country."
+        },
+        "elements": {
+            "locations": {
+                "description": "Dynamic environments where interactions occur",
+                "list": [
+                    {
+                        "ID": "location_1",
+                        "name": "Gregor's Room",
+                        "description": "A modest bedroom with simple furnishings, now in disarray due to Gregor's transformation.",
+                        "interactions": [
+                            "explore",
+                            "hide"
+                        ],
+                        "objects": [
+                            "object_1",
+                            "object_2"
+                        ]
+                    },
+                    {
+                        "ID": "location_2",
+                        "name": "Living Room",
+                        "description": "A well-decorated room with relics of better times, filled with family photographs and furniture.",
+                        "interactions": [
+                            "observe",
+                            "interact"
+                        ],
+                        "objects": [
+                            "object_3",
+                            "object_4"
+                        ]
+                    }
+                ]
+            },
+            "characters": {
+                "description": "Agents driving the story with dynamic interactions",
+                "list": [
+                    {
+                        "ID": "character_1",
+                        "name": "Gregor Samsa",
+                        "description": "A diligent and responsible traveling salesman who has been transformed into a monstrous insect-like creature.",
+                        "traits": [
+                            "responsible",
+                            "diligent"
+                        ],
+                        "skills": [
+                            "climbing walls",
+                            "hiding"
+                        ],
+                        "inventory": [
+                            "family_photo",
+                            "pocket_watch"
+                        ],
+                        "relationships": [
+                            "character_2",
+                            "character_3",
+                            "character_4"
+                        ],
+                        "interactions": [
+                            "reflect",
+                            "move"
+                        ],
+                        "dialogues": [
+                            {
+                                "ID": "dialogue_1",
+                                "spoken_text": "Why has this happened to me?",
+                                "choices": [
+                                    {
+                                        "ID": "choice_1",
+                                        "text": "Focus on survival",
+                                        "leadsTo": "dialogue_2"
+                                    },
+                                    {
+                                        "ID": "choice_2",
+                                        "text": "Try to communicate with family",
+                                        "leadsTo": "dialogue_3"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ID": "character_2",
+                        "name": "Grete Samsa",
+                        "description": "Gregor's sister, who initially tries to care for him but eventually grows resentful.",
+                        "traits": [
+                            "nurturing",
+                            "talented"
+                        ],
+                        "skills": [
+                            "playing violin",
+                            "cooking"
+                        ],
+                        "inventory": [
+                            "violin",
+                            "sheet music"
+                        ],
+                        "relationships": [
+                            "character_1",
+                            "character_3",
+                            "character_4"
+                        ],
+                        "interactions": [
+                            "care",
+                            "resent"
+                        ],
+                        "dialogues": [
+                            {
+                                "ID": "dialogue_1",
+                                "spoken_text": "I wish things could go back to how they were.",
+                                "choices": [
+                                    {
+                                        "ID": "choice_1",
+                                        "text": "Continue caring for Gregor",
+                                        "leadsTo": "dialogue_2"
+                                    },
+                                    {
+                                        "ID": "choice_2",
+                                        "text": "Distance myself from Gregor",
+                                        "leadsTo": "dialogue_3"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ID": "character_3",
+                        "name": "Mr. Samsa",
+                        "description": "Gregor's father, who grows bitter and resentful over time.",
+                        "traits": [
+                            "bitter",
+                            "authoritative"
+                        ],
+                        "skills": [
+                            "managing finances",
+                            "intimidating presence"
+                        ],
+                        "inventory": [
+                            "walking stick",
+                            "newspaper"
+                        ],
+                        "relationships": [
+                            "character_1",
+                            "character_2",
+                            "character_4"
+                        ],
+                        "interactions": [
+                            "scold",
+                            "demand"
+                        ],
+                        "dialogues": [
+                            {
+                                "ID": "dialogue_1",
+                                "spoken_text": "This is all your fault, Gregor!",
+                                "choices": [
+                                    {
+                                        "ID": "choice_1",
+                                        "text": "Express bitterness",
+                                        "leadsTo": "dialogue_2"
+                                    },
+                                    {
+                                        "ID": "choice_2",
+                                        "text": "Ignore Gregor",
+                                        "leadsTo": "dialogue_3"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ID": "character_4",
+                        "name": "Mrs. Samsa",
+                        "description": "Gregor's mother, who becomes emotionally overwhelmed and hysterical.",
+                        "traits": [
+                            "emotional",
+                            "nurturing"
+                        ],
+                        "skills": [
+                            "housekeeping",
+                            "empathy"
+                        ],
+                        "inventory": [
+                            "handkerchief",
+                            "sewing kit"
+                        ],
+                        "relationships": [
+                            "character_1",
+                            "character_2",
+                            "character_3"
+                        ],
+                        "interactions": [
+                            "comfort",
+                            "panic"
+                        ],
+                        "dialogues": [
+                            {
+                                "ID": "dialogue_1",
+                                "spoken_text": "Oh, what has happened to my dear Gregor?",
+                                "choices": [
+                                    {
+                                        "ID": "choice_1",
+                                        "text": "Show concern",
+                                        "leadsTo": "dialogue_2"
+                                    },
+                                    {
+                                        "ID": "choice_2",
+                                        "text": "Succumb to hysteria",
+                                        "leadsTo": "dialogue_3"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "objects": {
+                "description": "Interactive items within the storyspace",
+                "list": [
+                    {
+                        "ID": "object_1",
+                        "type": "photograph",
+                        "name": "Family Photograph",
+                        "usage": "A photograph that reminds Gregor of better times with his family.",
+                        "interactions": [
+                            "reflect",
+                            "reminisce"
+                        ]
+                    },
+                    {
+                        "ID": "object_2",
+                        "type": "instrument",
+                        "name": "Violin",
+                        "usage": "An instrument that signifies Grete's talent and Gregor's support for her.",
+                        "interactions": [
+                            "play",
+                            "cherish"
+                        ]
+                    }
+                ]
+            },
+            "events": {
+                "description": "Narrative triggers based on user actions",
+                "list": [
+                    {
+                        "ID": "event_1",
+                        "description": "Gregor's realization of his transformation.",
+                        "triggers": [
+                            "explore",
+                            "reflect"
+                        ],
+                        "consequences": [
+                            "dialogue_1"
+                        ]
+                    },
+                    {
+                        "ID": "event_2",
+                        "description": "Grete's eventual rejection of Gregor.",
+                        "triggers": [
+                            "resent",
+                            "distance"
+                        ],
+                        "consequences": [
+                            "dialogue_2",
+                            "dialogue_3"
+                        ]
+                    }
+                ]
+            },
+            "choices": {
+                "description": "Decision points that impact narrative progression",
+                "list": [
+                    {
+                        "ID": "choice_1",
+                        "text": "Focus on survival",
+                        "consequences": "Gregor hides and avoids confrontation."
+                    },
+                    {
+                        "ID": "choice_2",
+                        "text": "Try to communicate with family",
+                        "consequences": "Gregor tries to reconnect with his family despite growing resentment."
+                    },
+                    {
+                        "ID": "choice_3",
+                        "text": "Continue caring for Gregor",
+                        "consequences": "Grete maintains her initial efforts to care for Gregor."
+                    },
+                    {
+                        "ID": "choice_4",
+                        "text": "Distance myself from Gregor",
+                        "consequences": "Grete grows increasingly resentful and distant from Gregor."
+                    }
+                ]
+            },
+            "endings": {
+                "description": "Possible conclusions based on narrative choices",
+                "list": [
+                    {
+                        "ID": "ending_1",
+                        "type": "tragic",
+                        "condition": "Gregor remains isolated and neglected.",
+                        "results": "Gregor faces a silent and lonely demise."
+                    },
+                    {
+                        "ID": "ending_2",
+                        "type": "bittersweet",
+                        "condition": "Family reconciles with Gregor.",
+                        "results": "Despite hardships, the Samsa family finds a semblance of understanding and acceptance."
+                    }
+                ]
+            }
+        },
+        "interactionTypes": {
+            "explore": "Investigate surroundings and objects.",
+            "hide": "Avoid detection by family members.",
+            "reflect": "Contemplate personal and family circumstances.",
+            "move": "Navigate through rooms and spaces.",
+            "observe": "Look at objects and characters.",
+            "interact": "Engage with objects or characters.",
+            "care": "Show concern and provide help.",
+            "resent": "Express growing resentment and anger.",
+            "comfort": "Attempt to soothe and calm.",
+            "panic": "React emotionally to situations."
+        },
+        "rulesEngine": {
+            "description": "Dynamic rule application for narrative consistency",
+            "rules": [
+                {
+                    "ruleID": "rule_1",
+                    "condition": "dialogue_1",
+                    "action": "trigger event_1"
+                },
+                {
+                    "ruleID": "rule_2",
+                    "condition": "resent",
+                    "action": "trigger event_2"
+                }
+            ]
+        }
+    }
+},
+  "coherence_analysis_output_structure": {
+  "Issues": [
+    {
+      "Type": "Detail",
+      "Description": "The character background for [Character Name] is incomplete.",
+      "ImprovementSuggestion": "Enhance [Character Name]'s background by adding details about their history and motivations."
+    },
+    {
+      "Type": "Interconnectivity",
+      "Description": "The event [Event ID] does not clearly lead to the subsequent event.",
+      "ImprovementSuggestion": "Clarify how [Event ID] impacts the narrative progression to the next event [Next Event ID]."
+    },
+    {
+      "Type": "Language",
+      "Description": "There are syntactical errors in the dialogue for [Dialogue ID].",
+      "ImprovementSuggestion": "Revise the dialogue [Dialogue Text] to correct grammatical errors and improve clarity."
+    }
+  ]
+}
+}
+

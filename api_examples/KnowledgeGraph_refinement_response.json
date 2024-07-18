@@ -1,0 +1,235 @@
+{
+    "knowledgeGraph": {
+        "version": {
+            "version_number": "1.0",
+            "timestamp": "2024-06-02T12:00:00Z",
+            "description": "Initial version of the knowledge graph"
+        },
+        "characters": [
+            {
+                "name": "Gregor Samsa",
+                "hasDescription": "A traveling salesman who transforms into a giant insect.",
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            },
+            {
+                "name": "Grete Samsa",
+                "hasDescription": "Gregor's sister who becomes his primary caretaker.",
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            },
+            {
+                "name": "Mr. Samsa",
+                "hasDescription": "Gregor and Grete's father who is initially helpless but later becomes aggressive towards Gregor.",
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            }
+        ],
+        "events": [
+            {
+                "name": "Gregor wakes up to find himself transformed into a giant insect.",
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            },
+            {
+                "name": "Grete discovers Gregor's transformation.",
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            },
+            {
+                "name": "Mr. Samsa attacks Gregor with apples.",
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            },
+            {
+                "name": "Gregor is injured by an apple thrown by Mr. Samsa.",
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            },
+            {
+                "name": "The family begins to isolate Gregor.",
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            }
+        ],
+        "decision_points": [
+            {
+                "description": "Gregor decides whether to reveal himself to his family.",
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            },
+            {
+                "description": "Grete decides whether to continue caring for Gregor.",
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            },
+            {
+                "description": "The family decides whether to isolate Gregor further or seek help.",
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            }
+        ],
+        "actions": [
+            {
+                "description": "Draws a sword",
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            },
+            {
+                "description": "Casts a spell",
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            }
+        ],
+        "choices": [
+            {
+                "description": "Attack the enemy leader",
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            },
+            {
+                "description": "Retreat to save forces",
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            }
+        ],
+        "outcomes": [
+            {
+                "result_description": "The enemy is defeated",
+                "choice_index": 0,
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            },
+            {
+                "result_description": "Retained most of the forces",
+                "choice_index": 1,
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            }
+        ],
+        "character_relationships": [
+            {
+                "type": "sibling",
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            },
+            {
+                "type": "father-son",
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            }
+        ],
+        "character_plots": [
+            {
+                "plot_description": "Alice's Rise to Power",
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            },
+            {
+                "plot_description": "Bob's Secret Mission",
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            }
+        ],
+        "narrative_changes": [
+            {
+                "change_description": "New era begins",
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            },
+            {
+                "change_description": "Old alliances are broken",
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            }
+        ],
+        "participations": [
+            {
+                "character_index": 0,
+                "event_index": 0,
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            },
+            {
+                "character_index": 1,
+                "event_index": 1,
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            },
+            {
+                "character_index": 2,
+                "event_index": 2,
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            },
+            {
+                "character_index": 3,
+                "event_index": 0,
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            },
+            {
+                "character_index": 4,
+                "event_index": 1,
+                "created_at": "2024-06-02T12:00:00Z",
+                "updated_at": "2024-06-02T12:00:00Z",
+                "deleted_at": null,
+                "is_active": true
+            }
+        ]
+    }
+}

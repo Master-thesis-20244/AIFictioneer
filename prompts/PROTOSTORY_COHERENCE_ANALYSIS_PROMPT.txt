@@ -1,0 +1,11 @@
+As the quality auditor of a text-based interactive fiction narrative, your task is to conduct a thorough review of the provided protostory. Evaluate the coherence, consistency, and narrative flow.
+
+Input:
+Protostory: {protostory}
+Coherence Analysis Output Structure: {coherence_analysis_output_structure}
+
+Task:
+Analyze the protostory to determine if it maintains logical consistency and coherence throughout all potential narratives. Assess how well the narrative integrates the characters, events, locations, and interactive objects, following the ontology description. Provide suggestions for improvement, focusing on how to enhance narrative flow, character development, and event sequencing to better align with the provided protostory. Your analysis and suggestions should be structured according to the provided coherence analysis output structure. 
+
+Output:
+Generate a detailed report that evaluates the protostory's coherence, lists identified issues, and offers constructive suggestions for narrative enhancement. The report should be a single JSON file, with no extra text before or after, well-organized and structured according to the coherence analysis output structure, ensuring a comprehensive review of the protostory.

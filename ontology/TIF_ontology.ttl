@@ -1,0 +1,241 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix if: <http://example.org/interactive-fiction#> .
+
+# Classes
+if:StorySpace rdf:type owl:Class ;
+    rdfs:label "Story Space" ;
+    rdfs:comment "the overarching story space of the interactive fiction story, shaped by player choices and actions." .
+
+if:Character rdf:type owl:Class ;
+    rdfs:label "Character" ;
+    rdfs:comment "A charcter within the interactive fiction story, capable of influencing the story space through interactions and decisions." .
+
+if:InteractiveObject rdf:type owl:Class ;
+    rdfs:label "Interactive Object" ;
+    rdfs:comment "An interactiv object within the interactive fiction story that can affect or be affected by player actions." .
+
+if:Location rdf:type owl:Class ;
+    rdfs:label "Location" ;
+    rdfs:comment "A setting within the interactive fiction story, serving as the backdrop for events and character interactions." .
+
+if:Ending rdf:type owl:Class ;
+    rdfs:label "Ending" ;
+    rdfs:comment "A potential conclusion of the interactive fiction story, resulting from the cumulative effect of player choices." .
+
+if:Event rdf:type owl:Class ;
+    rdfs:label "Event" ;
+    rdfs:comment "a significant occurrence within the interactive fiction story space, possibly influenced by or influencing player choices." .
+
+if:Choice rdf:type owl:Class ;
+    rdfs:label "Choice" ;
+    rdfs:comment "A decision point in the story space, where the player selects from available options, each leading to different narrative branches." .
+
+if:Dialogue rdf:type owl:Class ;
+    rdfs:label "Dialogue" ;
+    rdfs:comment "Conversational exchanges within the story, reflecting character personalities and potentially affecting the story space." .
+
+# Datatype Properties
+if:hasName rdf:type owl:DatatypeProperty ;
+    rdfs:domain if:Character ;
+    rdfs:range xsd:string ;
+    rdfs:label "hasName" ;
+    rdfs:comment "The name of a charcter." .
+
+if:hasAge rdf:type owl:DatatypeProperty ;
+    rdfs:domain if:Character ;
+    rdfs:range xsd:integer ;
+    rdfs:label "hasAge" ;
+    rdfs:comment "The age of a character." .
+
+if:hasSkill rdf:type owl:DatatypeProperty ;
+    rdfs:domain if:Character ;
+    rdfs:range xsd:string ;
+    rdfs:label "hasSkill" ;
+    rdfs:comment "A list of a character's skills." .
+
+if:hasTrait rdf:type owl:DatatypeProperty ;
+    rdfs:domain if:Character ;
+    rdfs:range xsd:string ;
+    rdfs:label "hasTrait" ;
+    rdfs:comment "defines a character trait, describing intrinsic qualities that influence a character's decisions and interactions within the story." .
+
+if:hasInventory rdf:type owl:DatatypeProperty ;
+    rdfs:domain if:Character ;
+    rdfs:range xsd:string ;
+    rdfs:label "hasInventory" ;
+    rdfs:comment "A list of items that a character currently has in their inventory." .
+
+if:hasCharacterDescription rdf:type owl:DatatypeProperty ;
+    rdfs:domain if:Character ;
+    rdfs:range xsd:string ;
+    rdfs:label "hasCharacterDescription" ;
+    rdfs:comment "a description of a character." .
+
+if:hasStorySpaceDescription rdf:type owl:DatatypeProperty ;
+    rdfs:domain if:StorySpace ;
+    rdfs:range xsd:string ;
+    rdfs:label "hasStorySpaceDescription" ;
+    rdfs:comment "Descriptive text that provides context and detail throughout the story space." .
+
+if:hasStartingDescription rdf:type owl:DatatypeProperty ;
+    rdfs:domain if:StorySpace ;
+    rdfs:range xsd:string ;
+    rdfs:label "hasStartingDescription" .
+
+if:hasDialogueDescription rdf:type owl:DatatypeProperty ;
+    rdfs:domain if:Dialogue ;
+    rdfs:range xsd:string ;
+    rdfs:label "hasDialogueDescription" ;
+    rdfs:comment "A description of a dialogue." .
+
+if:hasInteractiveObjectDescription rdf:type owl:DatatypeProperty ;
+    rdfs:domain if:InteractiveObject ;
+    rdfs:range xsd:string ;
+    rdfs:label "hasInteractiveObjectDescription" .
+
+if:hasLocationDescription rdf:type owl:DatatypeProperty ;
+    rdfs:domain if:Location ;
+    rdfs:range xsd:string ;
+    rdfs:label "hasLocationDescription" ;
+    rdfs:comment "A description of a location." .
+
+if:hasEventDescription rdf:type owl:DatatypeProperty ;
+    rdfs:domain if:Event ;
+    rdfs:range xsd:string ;
+    rdfs:label "hasEventDescription" .
+
+if:hasChoiceDescription rdf:type owl:DatatypeProperty ;
+    rdfs:domain if:Choice ;
+    rdfs:range xsd:string ;
+    rdfs:label "hasChoiceDescription" ;
+    rdfs:comment "A description of a choice point, emphasizing the options available to the player and their potential consequences." .
+
+if:hasEndingDescription rdf:type owl:DatatypeProperty ;
+    rdfs:domain if:Ending ;
+    rdfs:range xsd:string ;
+    rdfs:label "hasEndingDescription" ;
+    rdfs:comment "A description of an ending, detailing the outcome of the story based on the choices made by the player." .
+
+if:hasEventTitle rdf:type owl:DatatypeProperty ;
+    rdfs:domain if:Event ;
+    rdfs:range xsd:string ;
+    rdfs:label "hasEventTitle" ;
+    rdfs:comment "A title that provides a brief description or summary of the event." .
+
+# Object Properties
+
+if:storySpaceInvolvesCharacter rdf:type owl:ObjectProperty ;
+    rdfs:domain if:StorySpace ;
+    rdfs:range if:Character ;
+    rdfs:label "story space involves character" ;
+    rdfs:comment "highlights story space segments focused on character development, decisions, or critical moments involving characters." .
+
+if:includesEvent rdf:type owl:ObjectProperty ;
+    rdfs:domain if:StorySpace ;
+    rdfs:range if:Event ;
+    rdfs:label "includes event" ;
+    rdfs:comment "Associates the story space with key events that are integral to the story's progression, independent of immediate player choices." .
+
+if:includesLocation rdf:type owl:ObjectProperty ;
+    rdfs:domain if:StorySpace ;
+    rdfs:range if:Location ;
+    rdfs:label "includes location" ;
+    rdfs:comment "Associates the story space with specific locations where key events and interactions take place, underscoring the importance of setting in the story." .
+
+if:hasRelationshipWith rdf:type owl:ObjectProperty ;
+    rdfs:domain if:Character ;
+    rdfs:range if:Character ;
+    rdfs:label "hasRelationshipWith" ;
+    rdfs:comment "Denotes the relationship between two characters within the story space." .
+
+if:participatesInEvent rdf:type owl:ObjectProperty ;
+    rdfs:domain if:Character ;
+    rdfs:range if:Event ;
+    rdfs:label "participates in event" ;
+    rdfs:comment "Associates a character with an event they are involved in, indicating active participation or influence." .
+
+if:makesChoice rdf:type owl:ObjectProperty ;
+    rdfs:domain if:Character ;
+    rdfs:range if:Choice ;
+    rdfs:label "makes choice" ;
+    rdfs:comment "Associates a character (typically the player) with a choice they make within the story space." .
+
+if:interactsWith rdf:type owl:ObjectProperty ;
+    rdfs:domain if:Character ;
+    rdfs:range if:InteractiveObject ;
+    rdfs:label "interacts with" ;
+    rdfs:comment "Indicates a general interaction between a character and an interactive object within the story space." .
+
+if:leadsTo rdf:type owl:ObjectProperty ;
+    rdfs:domain if:Choice ;
+    rdfs:range if:Event ;
+    rdfs:label "leadsTo" ;
+    rdfs:comment "Indicates the event or series of events that a user choice leads to, highlighting the branching nature of the story space." .
+
+if:triggersChoice rdf:type owl:ObjectProperty ;
+    rdfs:domain if:Event ;
+    rdfs:range if:Choice ;
+    rdfs:label "triggers choice" ;
+    rdfs:comment "Indicates that an event triggers the presentation of one or more new choices to the player, influencing the subsequent story space direction." .
+
+if:resultsInEnding rdf:type owl:ObjectProperty ;
+    rdfs:domain if:Choice ;
+    rdfs:range if:Ending ;
+    rdfs:label "results in ending" ;
+    rdfs:comment "Indicates the ending that results from a series of choices, emphasizing the direct impact of player decisions on the story space outcome." .
+
+if:concludesWithEnding rdf:type owl:ObjectProperty ;
+    rdfs:domain if:Event ;
+    rdfs:range if:Ending ;
+    rdfs:label "concludes with ending" ;
+    rdfs:comment "Indicates that an event directly leads to a specific ending of the story space, reflecting the culmination of preceding story space developments." .
+
+if:containsInteractiveObject rdf:type owl:ObjectProperty ;
+    rdfs:domain if:Location ;
+    rdfs:range if:InteractiveObject ;
+    rdfs:label "contains interactive object" ;
+    rdfs:comment "indicates that a location features an interactive object that can be part of story space events or choices." .
+
+if:occursIn rdf:type owl:ObjectProperty ;
+    rdfs:domain if:Event ;
+    rdfs:range if:Location ;
+    rdfs:label "occurs in" ;
+    rdfs:comment "Specifies the setting where an event takes place, linking events to specific locations within the story space." .
+
+if:dialogueInEvent rdf:type owl:ObjectProperty ;
+    rdfs:domain if:Dialogue ;
+    rdfs:range if:Event ;
+    rdfs:label "dialogue in event" ;
+    rdfs:comment "Associates dialogue with the specific event it occurs in, tying conversational elements to story space occurrences." .
+
+if:involvesInteractiveObject rdf:type owl:ObjectProperty ;
+    rdfs:domain if:Event ;
+    rdfs:range if:InteractiveObject ;
+    rdfs:label "involves interactive object" ;
+    rdfs:comment "Associates an event with interactive objects that play a role in the event's unfolding or outcome." .
+
+if:inspiredByCharacter rdf:type owl:ObjectProperty ;
+    rdfs:domain if:Dialogue ;
+    rdfs:range if:Character ;
+    rdfs:label "inspired by character" ;
+    rdfs:comment "Indicates that a piece of dialogue is directly inspired by, tailored to, or about a specific character within the story space." .
+
+if:hasTitle rdf:type owl:DatatypeProperty ;
+    rdfs:domain if:StorySpace ;
+    rdfs:range xsd:string ;
+    rdfs:label "hasTitle" ;
+    rdfs:comment "defines the title of the story space." .
+
+if:hasTimePeriod rdf:type owl:DatatypeProperty ;
+    rdfs:domain if:StorySpace ;
+    rdfs:range xsd:string ;
+    rdfs:label "hasTimePeriod" ;
+    rdfs:comment "Defines the time period during which the story space is set." .
+
+if:hasCulturalContext rdf:type owl:DatatypeProperty ;
+    rdfs:domain if:StorySpace ;
+    rdfs:range xsd:string ;
+    rdfs:label "hasCulturalContext" .

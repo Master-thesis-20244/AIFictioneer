@@ -1,0 +1,205 @@
+{% extends "AIFictioneer/index.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'AIFictioneer/ideation_styles.css' %}">
+
+<div class="ideation-section">
+    <h2>Ideation Stage</h2>
+    <p>Input elements to create a background story for your interactive narrative.</p>
+    
+    <form action="" method="post" id="ideaForm" class="ideation-form">
+        {% csrf_token %}
+        
+        <!-- Input to determine action: generate or refine -->
+        <input type="hidden" name="action" value="generate" id="actionInput">
+
+        <!-- custom genre -->
+        <div class="form-group">
+            <label for="genreSelect">Genre:</label>
+            <select id="genreSelect" name="genreSelect" onchange="checkForOther(this);">
+                <option value="fantasy">Fantasy</option>
+                <option value="sci-fi">Sci-Fi</option>
+                <option value="mystery">Mystery</option>
+                <option value="romance">Romance</option>
+                <option value="horror">Horror</option>
+                <option value="other">Other (Please Specify)</option>
+            </select>
+            <input type="text" id="otherGenreInput" name="otherGenre" placeholder="Enter your genre here" style="display: none;" oninput="updateGenreValue(this.value);">
+        </div>
+
+        <!-- input for Custom Genre -->
+        <div class="form-group" id="otherGenre" style="display: none;">
+            <label for="otherGenreInput">Specify Genre:</label>
+            <input type="text" id="otherGenreInput" name="otherGenre" placeholder="Enter your genre here">
+        </div>
+
+        <div class="form-group">
+            <label for="titleInput">Title:</label>
+            <input type="text" id="titleInput" name="title" placeholder="Enter your title here" value="{{ form_data.title }}">
+        </div>
+
+        <div class="form-group">
+            <label for="initialStoryOutline">Initial Story Outline:</label>
+            <textarea id="initialStoryOutline" name="initial_story_outline" placeholder="Outline the initial concept of your narrative..." style="height: 200px;">{{ form_data.initial_story_outline }}</textarea>
+        </div>
+
+        <div class="form-group character-profiles">
+            <label>Character Profiles:</label>
+            {% if form_data.character_profiles %}
+                {% for profile in form_data.character_profiles %}
+                <div class="character-profile" data-character-number="{{ forloop.counter }}">
+                    <input type="text" name="characterName{{ forloop.counter }}" placeholder="Character Name" value="{{ profile.name }}">
+                    <input type="text" name="characterTraits{{ forloop.counter }}" placeholder="Character Traits (e.g., Brave, Cunning)" value="{{ profile.traits }}">
+                    <textarea name="characterBackground{{ forloop.counter }}" placeholder="Character Background">{{ profile.background }}</textarea>
+                    <button type="button" onclick="removeCharacterProfile(this)">Remove</button>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="character-profile" data-character-number="1">
+                    <input type="text" name="characterName1" placeholder="Character Name">
+                    <input type="text" name="characterTraits1" placeholder="Character Traits (e.g., Brave, Cunning)">
+                    <textarea name="characterBackground1" placeholder="Character Background"></textarea>
+                    <button type="button" onclick="removeCharacterProfile(this)">Remove</button>
+                </div>
+            {% endif %}
+            <button type="button" onclick="addCharacterProfile()">Add Another Character</button>
+        </div>   
+
+        <div class="form-group">
+            <label for="maxWordsBackgroundStoryInput">Max Words Background Story (approx.):</label>
+            <input type="number" id="maxWordsBackgroundStoryInput" name="max_words_background_story" placeholder="Enter max word count" value="{{ form_data.max_words_background_story }}">
+        </div>
+
+        <input type="hidden" name="edited_story" id="editedStoryInput">  
+        <input type="hidden" name="narrative_engineer_feedback" id="narrative_engineerFeedbackInput"> 
+        <input type="submit" value="Generate Background Story" onclick="setAction('generate')">
+    </form>
+
+    <div class="generated-ideas">
+        <div class="ideas-container">
+            <div class="idea-section">
+                <div class="section-header">
+                    <h4>Generated Background Story</h4>
+                </div>
+                <div class="idea-output" id="backgroundStoryOutput" contenteditable="true">
+                    {% if refined_background_story %}
+                        <p>{{ refined_background_story|safe }}</p>
+                    {% elif generated_background_story %}
+                        <p>{{ generated_background_story|safe }}</p>
+                    {% else %}
+                        <p>Your generated background story will appear here...</p>
+                    {% endif %}
+                </div>
+                             
+                <h4>Author Feedback on Generated Story</h4>
+                <textarea name="narrative_engineer_feedback_textarea" id="narrative_engineer_feedback_prompt" placeholder="Enter your feedback on the generated story here" style="width: 100%;"></textarea>
+                <input type="submit" value="Refine Background Story" id="refineButton">
+            </div>
+        </div>
+    </div>
+
+    <!-- proceeding to meaning-making -->
+    <form action="{% url 'meaning_making' %}" method="post" style="margin-top: 20px;">
+        {% csrf_token %}
+        <input type="hidden" name="edited_story" id="editedStoryInputmeaningmaking">
+        <input type="submit" value="Proceed to Meaning Making" onclick="copyEditedStoryFormeaningmaking()">
+    </form>
+</div>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('refineButton').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the form from submitting immediately
+            captureDataForRefinementAndSubmit('refine');
+        });
+    });
+
+    function addCharacterProfile() {
+        var characterProfilesContainer = document.querySelector('.character-profiles');
+        var existingProfiles = characterProfilesContainer.querySelectorAll('.character-profile');
+        var newCharacterNumber = 1;
+
+        if (existingProfiles.length > 0) {
+            var lastProfileNumber = Math.max(...Array.from(existingProfiles).map(
+                profile => parseInt(profile.dataset.characterNumber, 10)
+            ));
+            newCharacterNumber = lastProfileNumber + 1;
+        }
+
+        var newProfile = document.createElement('div');
+        newProfile.className = 'character-profile';
+        newProfile.dataset.characterNumber = newCharacterNumber;
+        newProfile.innerHTML = `
+            <input type="text" name="characterName${newCharacterNumber}" placeholder="Character Name">
+            <input type="text" name="characterTraits${newCharacterNumber}" placeholder="Character Traits (e.g., Brave, Cunning)">
+            <textarea name="characterBackground${newCharacterNumber}" placeholder="Character Background"></textarea>
+            <button type="button" onclick="removeCharacterProfile(this)">Remove</button>
+        `;
+
+        characterProfilesContainer.appendChild(newProfile);
+    }    
+
+    function removeCharacterProfile(element) {
+        var profileDiv = element.parentNode;
+        profileDiv.parentNode.removeChild(profileDiv);
+    }
+
+
+    function captureDataForRefinementAndSubmit(action) {
+        console.log("Capturing data for refinement..."); // Debugging line
+
+        // Capture the edited background story content.
+        var editedStory = document.getElementById('backgroundStoryOutput').innerText;
+        document.getElementById('editedStoryInput').value = editedStory;
+
+        // Copy narrative_engineer feedback before submission.
+        var narrative_engineerFeedback = document.getElementById('narrative_engineer_feedback_prompt').value;
+        console.log("Author Feedback: ", narrative_engineerFeedback); // Debugging line
+        document.getElementById('narrative_engineerFeedbackInput').value = narrative_engineerFeedback;
+
+        document.getElementById('actionInput').value = action;
+
+        console.log("Submitting form..."); // Debug
+        document.getElementById('ideaForm').submit();
+    }
+
+    
+    function setAction(action) {
+        if (action === 'refine') {
+            captureDataForRefinementAndSubmit(); 
+        }
+        document.getElementById('actionInput').value = action;
+        document.getElementById('ideaForm').submit();
+    }  
+    
+    function copyEditedStoryFormeaningmaking() {
+        var editedStory = document.getElementById('backgroundStoryOutput').innerText;
+        document.getElementById('editedStoryInput').value = editedStory;
+        document.getElementById('editedStoryInputmeaningmaking').value = editedStory;
+        console.log('Edited Story:', editedStory);  // debug
+    } 
+    
+    function checkForOther(selectElement) {
+        var genreValue = selectElement.value;
+        var otherGenreInput = document.getElementById('otherGenreInput');
+        if (genreValue === 'other') {
+            otherGenreInput.style.display = '';
+            otherGenreInput.setAttribute('name', 'genreSelect'); // Change name to genreSelect to submit this value
+        } else {
+            // Hide the input field and reset its value
+            otherGenreInput.style.display = 'none';
+            otherGenreInput.removeAttribute('name'); // remove name to avoid submission
+            selectElement.setAttribute('name', 'genreSelect');
+        }
+    }
+
+    function updateGenreValue(customGenre) {
+        var genreSelect = document.getElementById('genreSelect');
+        if (genreSelect.value === 'other') {
+            genreSelect.value = customGenre;
+        }
+    }                   
+</script>
+{% endblock %}

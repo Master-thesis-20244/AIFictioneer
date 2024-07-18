@@ -1,0 +1,18 @@
+{
+ "title": "Methamorphosis",
+  "genre": "absurdist fiction",
+  "initial_story_outline": "This is a story of Gregor Samsa, a young man who wakes up one morning and finds himself turned into a monstrous insect-like creature. As he struggles with his new form, he tries to maintain his humanity while navigating the relationships with his family, who are shocked by his transformation. The family starts encoutering financial issues, because Gregor was the only breadwinner in the house. As time goes by, Gregor feels more and more isolated while his family grows more and more hostile and resentful towards him. Eventually, they neglect him, which leads to his silent death.",
+  "character_profiles": [
+    {
+      "name": "Gregor Samsa",
+      "traits": "hardworking, responsible",
+      "background": "A travelling salesman who needs to work to pay the bills of his father. Lives together with his family."
+    },
+ {
+      "name": "The Family",
+      "traits": "distressed, exhausted",
+      "background": "The Family consists of Grete Samsa (Sister), Mr. Samsa (Father) and Mrs. Samsa (Mother) of Gregor. All of them get shocked by transformation and initially try to help. But after they become hostile and hateful towards Gregor and neglect him. "
+    }
+  ],
+  "max_words_background_story": "300"
+}

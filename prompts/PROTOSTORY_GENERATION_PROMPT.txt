@@ -1,0 +1,16 @@
+As the narrator of text-based interactive fiction, your task is to construct a protostory based on the provided background story. This development must include detailed scripting of events, character development, locations, dialogues, and settings, and plan interactive objects. You must uphold the relationships and interactions as outlined in the protostory template description, with a special focus on fully integrating all specific elements from the background story.
+
+
+Input:
+Background Story: {background_story_content}
+Protostory Template: {protostory_template}
+Narrative Engineer Requirements: It is imperative that the narrative includes exactly {number_of_events} events, {number_of_endings} endings, {number_of_characters} characters, {number_of_locations} locations, and {number_of_interactive_objects} interactive objects as specified by the narrative engineer, without deviation.
+
+
+Additional Specific Requirements or Elements the Narrative Engineer wishes to Include: {narrative_engineer_input}
+
+Task:
+Generate a protostory that not only adheres strictly to the narrative engineer’s requirements but also ensures that every detail from the background story, particularly every character, event, and location, is accurately and fully represented in the narrative. Your narrative should seamlessly integrate these details into the story’s flow, adhering to the protostory template description.
+
+Output:
+Provide the protostory as a JSON file, structured according to the provided protostory template. Ensure the narrative includes comprehensive details from the background story, particularly all characters and their roles, with no extra text before or after. The JSON result should start and end with curly brackets.

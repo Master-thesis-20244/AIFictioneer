@@ -1,0 +1,370 @@
+{
+  "protostory": {
+    "storySpace": {
+      "title": "Portal",
+      "description": "A failed used car salesman stumbles upon an alien teleporter, thrusting him into a high-stakes struggle involving secret organizations, government agents, and radical groups.",
+      "timePeriod": "2023",
+      "culturalContext": "Modern suburban life with underlying secrets and advanced alien technology."
+    },
+    "elements": {
+      "locations": {
+        "description": "Dynamic environments where interactions occur",
+        "list": [
+          {
+            "ID": "loc1",
+            "name": "Crescent Oaks",
+            "description": "A sleepy suburban town masking untold secrets.",
+            "interactions": ["explore", "investigate"],
+            "objects": ["obj1"]
+          },
+          {
+            "ID": "loc2",
+            "name": "Letty’s Auto Emporium",
+            "description": "A small, cluttered car dealership, where Jonah works and the teleporter is discovered.",
+            "interactions": ["explore", "conflict"],
+            "objects": ["obj1", "obj2"]
+          },
+          {
+            "ID": "loc3",
+            "name": "Sarah’s Library",
+            "description": "A local library where Sarah works, filled with hidden knowledge.",
+            "interactions": ["research", "collaborate"],
+            "objects": ["obj3"]
+          },
+          {
+            "ID": "loc4",
+            "name": "Hidden Bunker",
+            "description": "An underground facility connected to an abandoned factory, with labyrinthine tunnels holding the ultimate secrets.",
+            "interactions": ["explore", "battle"],
+            "objects": ["obj4"]
+          },
+          {
+            "ID": "loc5",
+            "name": "Global Portal Locations",
+            "description": "Various culturally significant locations accessible through the portals.",
+            "interactions": ["travel", "solve"],
+            "objects": ["obj5", "obj6"]
+          }
+        ]
+      },
+      "characters": {
+        "description": "Agents driving the story with dynamic interactions",
+        "list": [
+          {
+            "ID": "char1",
+            "name": "Jonah Smith",
+            "description": "A 32-year-old used car salesman who discovers the teleporter.",
+            "traits": ["insecure", "resourceful"],
+            "skills": ["investigation", "negotiation"],
+            "inventory": ["obj1", "obj2"],
+            "relationships": ["char2", "char3", "char4", "char5"],
+            "interactions": ["talk", "escape"],
+            "dialogues": [
+              {
+                "ID": "dialogue1",
+                "spoken_text": "What have I gotten myself into?",
+                "choices": [
+                  {
+                    "ID": "choice1",
+                    "text": "Confide in Sarah.",
+                    "leadsTo": "dialogue2"
+                  },
+                  {
+                    "ID": "choice2",
+                    "text": "Try to handle it alone.",
+                    "leadsTo": "dialogue3"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "ID": "char2",
+            "name": "Sarah Thompson",
+            "description": "A sharp-witted librarian and Jonah's friend, skilled in research.",
+            "traits": ["intelligent", "compassionate"],
+            "skills": ["research", "problem-solving"],
+            "inventory": ["obj3"],
+            "relationships": ["char1"],
+            "interactions": ["talk", "assist"],
+            "dialogues": [
+              {
+                "ID": "dialogue4",
+                "spoken_text": "Jonah, this could be something big.",
+                "choices": [
+                  {
+                    "ID": "choice3",
+                    "text": "Let's figure it out together.",
+                    "leadsTo": "dialogue5"
+                  },
+                  {
+                    "ID": "choice4",
+                    "text": "It’s too dangerous. We should stop.",
+                    "leadsTo": "dialogue6"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "ID": "char3",
+            "name": "Agent Carter",
+            "description": "A cold, calculating government operative with hidden motives.",
+            "traits": ["ruthless", "secretive"],
+            "skills": ["combat", "strategy"],
+            "inventory": ["obj4"],
+            "relationships": ["char1"],
+            "interactions": ["intimidate", "collaborate"],
+            "dialogues": [
+              {
+                "ID": "dialogue7",
+                "spoken_text": "We control the situation now.",
+                "choices": [
+                  {
+                    "ID": "choice5",
+                    "text": "Cooperate for now.",
+                    "leadsTo": "dialogue8"
+                  },
+                  {
+                    "ID": "choice6",
+                    "text": "Find a way to escape.",
+                    "leadsTo": "dialogue9"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "ID": "char4",
+            "name": "Dr. Evelyn Reed",
+            "description": "A scientist with the Organization, dedicated to protecting portal secrets.",
+            "traits": ["dedicated", "morally ambiguous"],
+            "skills": ["science", "manipulation"],
+            "inventory": ["obj5"],
+            "relationships": ["char1"],
+            "interactions": ["manipulate", "protect"],
+            "dialogues": [
+              {
+                "ID": "dialogue10",
+                "spoken_text": "You must trust us to keep this safe.",
+                "choices": [
+                  {
+                    "ID": "choice7",
+                    "text": "Trust her expertise.",
+                    "leadsTo": "dialogue11"
+                  },
+                  {
+                    "ID": "choice8",
+                    "text": "Doubt her intentions.",
+                    "leadsTo": "dialogue12"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "ID": "char5",
+            "name": "Marcus Trent",
+            "description": "Leader of the Disruptors, sees portals as a threat to humanity.",
+            "traits": ["idealistic", "fierce"],
+            "skills": ["leadership", "combat"],
+            "inventory": ["obj6"],
+            "relationships": ["char1"],
+            "interactions": ["persuade", "destroy"],
+            "dialogues": [
+              {
+                "ID": "dialogue13",
+                "spoken_text": "These devices must be destroyed.",
+                "choices": [
+                  {
+                    "ID": "choice9",
+                    "text": "Join his cause.",
+                    "leadsTo": "dialogue14"
+                  },
+                  {
+                    "ID": "choice10",
+                    "text": "Oppose him.",
+                    "leadsTo": "dialogue15"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "objects": {
+        "description": "Interactive items within the storyspace",
+        "list": [
+          {
+            "ID": "obj1",
+            "type": "device",
+            "name": "Alien Teleporter",
+            "usage": "A sleek device with unknown runes, enabling travel through portals.",
+            "interactions": ["activate", "study"]
+          },
+          {
+            "ID": "obj2",
+            "type": "document",
+            "name": "Storage Unit Papers",
+            "usage": "Old documents providing clues about the teleporters.",
+            "interactions": ["read", "analyze"]
+          },
+          {
+            "ID": "obj3",
+            "type": "book",
+            "name": "Ancient Maps and Journals",
+            "usage": "These books provide hints and backstory.",
+            "interactions": ["decode", "reference"]
+          },
+          {
+            "ID": "obj4",
+            "type": "key",
+            "name": "Enigmatic Keys",
+            "usage": "Keys that unlock different terminals of the portal network.",
+            "interactions": ["unlock", "solve"]
+          },
+          {
+            "ID": "obj5",
+            "type": "device",
+            "name": "Portal Terminal",
+            "usage": "A terminal that connects to the network of teleporters globally.",
+            "interactions": ["access", "travel"]
+          },
+          {
+            "ID": "obj6",
+            "type": "tool",
+            "name": "Hacking Device",
+            "usage": "Device used to override security systems of the portals.",
+            "interactions": ["hack", "override"]
+          }
+        ]
+      },
+      "events": {
+        "description": "Narrative triggers based on user actions",
+        "list": [
+          {
+            "ID": "ev1",
+            "description": "Jonah accidentally activates the teleporter.",
+            "triggers": ["choice1"],
+            "consequences": ["ev2"]
+          },
+          {
+            "ID": "ev2",
+            "description": "Sarah and Jonah decode the device’s cryptic clues.",
+            "triggers": ["choice3"],
+            "consequences": ["ev3"]
+          },
+          {
+            "ID": "ev3",
+            "description": "Agent Carter captures Jonah, leading to a forced alliance.",
+            "triggers": ["choice5"],
+            "consequences": ["ev4"]
+          },
+          {
+            "ID": "ev4",
+            "description": "Dr. Reed and Marcus Trent clash, each trying to sway Jonah.",
+            "triggers": ["choice7", "choice9"],
+            "consequences": ["ev5"]
+          },
+          {
+            "ID": "ev5",
+            "description": "A climatic revelation in the hidden bunker threatens human society.",
+            "triggers": ["choice2"],
+            "consequences": ["ending1", "ending2"]
+          }
+        ]
+      },
+      "choices": {
+        "description": "Decision points that impact narrative progression",
+        "list": [
+          {
+            "ID": "choice1",
+            "text": "Investigate the device further.",
+            "consequences": "ev1"
+          },
+          {
+            "ID": "choice2",
+            "text": "Seek help from Sarah.",
+            "consequences": "ev2"
+          },
+          {
+            "ID": "choice3",
+            "text": "Collaborate with Sarah to decode the device.",
+            "consequences": "ev2"
+          },
+          {
+            "ID": "choice4",
+            "text": "Handle the investigation alone.",
+            "consequences": "ev3"
+          },
+          {
+            "ID": "choice5",
+            "text": "Work with Agent Carter temporarily.",
+            "consequences": "ev3"
+          },
+          {
+            "ID": "choice6",
+            "text": "Escape from Agent Carter’s hold.",
+            "consequences": "ev4"
+          },
+          {
+            "ID": "choice7",
+            "text": "Follow Dr. Reed's plan.",
+            "consequences": "ev4"
+          },
+          {
+            "ID": "choice8",
+            "text": "Join Marcus Trent's cause.",
+            "consequences": "ev4"
+          },
+          {
+            "ID": "choice9",
+            "text": "Oppose Marcus Trent.",
+            "consequences": "ev5"
+          },
+          {
+            "ID": "choice10",
+            "text": "Unlock the secrets of the hidden bunker.",
+            "consequences": "ev5"
+          }
+        ]
+      },
+      "endings": {
+        "description": "Possible conclusions based on narrative choices",
+        "list": [
+          {
+            "ID": "ending1",
+            "type": "positive",
+            "condition": "Unite all factions for a greater good.",
+            "results": "Jonah ends the threat and harnesses the portals for beneficial uses."
+          },
+          {
+            "ID": "ending2",
+            "type": "negative",
+            "condition": "Fail to unite factions, leading to chaos.",
+            "results": "The portals' existence becomes known, causing worldwide panic and conflict."
+          }
+        ]
+      }
+    },
+    "interactionTypes": {
+      "explore": "Investigate the surrounding environment to uncover new elements.",
+      "investigate": "Closely examine objects or clues to advance the story."
+    },
+    "rulesEngine": {
+      "description": "Dynamic rule application for narrative consistency",
+      "rules": [
+        {
+          "ruleID": "rule1",
+          "condition": "ev1",
+          "action": "Start global chase with factions closing in."
+        },
+        {
+          "ruleID": "rule2",
+          "condition": "ev2",
+          "action": "Unlock knowledge of the portal network."
+        }
+      ]
+    }
+  }
+}

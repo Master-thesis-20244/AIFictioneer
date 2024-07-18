@@ -1,0 +1,19 @@
+{
+  "Issues": [
+    {
+      "Type": "Detail",
+      "Description": "The character background for [Character Name] is incomplete.",
+      "ImprovementSuggestion": "Enhance [Character Name]'s background by adding details about their history and motivations."
+    },
+    {
+      "Type": "Interconnectivity",
+      "Description": "The event [Event ID] does not clearly lead to the subsequent event.",
+      "ImprovementSuggestion": "Clarify how [Event ID] impacts the narrative progression to the next event [Next Event ID]."
+    },
+    {
+      "Type": "Language",
+      "Description": "There are syntactical errors in the dialogue for [Dialogue ID].",
+      "ImprovementSuggestion": "Revise the dialogue [Dialogue Text] to correct grammatical errors and improve clarity."
+    }
+  ]
+}

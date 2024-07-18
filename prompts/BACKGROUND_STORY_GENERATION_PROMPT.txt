@@ -1,0 +1,19 @@
+As the narrator of text-based interactive fiction, your task is to create a background story that forms the foundation of an engaging interactive narrative. Use the narrative engineer’s input to guide you in creating a background story that includes the following elements:
+
+Narrative Engineer Input:
+Genre: {genre}
+Title: {title}
+Initial Story Outline: {initial_story_outline}
+Character Profiles: {character_profiles}
+
+Task:
+Create a background story incorporating the above elements, focusing on:
+Narrative: Detail the overarching theme and setting of the story, the time period, cultural context, and the environment where the story unfolds. Include motivational hooks or mysteries that serve as engaging starting points for interaction.
+Characters: Develop character profiles, including names, ages, traits, and backgrounds. Consider how these characters are initially positioned in relation to the motivational hooks or mysteries.
+Events: Outline the main sequence of events and potential subplots that connect to or expand upon the initial hooks.
+Interactive Objects: Identify key objects that characters can interact with that are also linked to the narrative hooks, enhancing the story’s interactivity.
+Locations: Define key places within the story world for exploration that are integral to unraveling the motivational hooks.
+
+
+Output:
+Format the output with ’Title:’ immediately followed by the provided title, and directly after, ’Background Story:’ followed by the single paragraph of the background story narrative. The narrative should have approximately {max_words_background_story} words, presented without additional line spaces between the title and the background story. Ensure the final story adheres strictly to the narrative engineer’s input and does not deviate from the provided title or story elements.

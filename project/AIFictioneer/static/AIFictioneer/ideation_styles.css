@@ -1,0 +1,83 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.ideation-form,
+.generated-ideas,
+#storyWorldOutput,
+#narrative_engineer_feedback_prompt {
+    max-width: 600px;
+    margin: 0;
+    padding: 15px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#narrative_engineer_feedback_prompt {
+    margin-bottom: 20px;
+    width: calc(100% - 30px);
+}
+
+.character-profiles .character-profile {
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ddd;
+}
+
+@media (max-width: 768px) {
+    .ideation-form,
+    .generated-ideas,
+    #storyWorldOutput,
+    #narrative_engineer_feedback_prompt,
+    .form-group input[type="text"],
+    .form-group select,
+    .form-group textarea {
+        max-width: none;
+        margin: 0;
+        padding: 15px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+}
+
+.idea-output {
+    border: 1px solid #888; /* Add your desired border style */
+    padding: 8px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.generated-ideas .ideas-container .idea-section .idea-output {
+    border: 1px solid #888 !important;
+}

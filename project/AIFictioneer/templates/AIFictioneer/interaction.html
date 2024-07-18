@@ -1,0 +1,89 @@
+{% extends "AIFictioneer/index.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'AIFictioneer/interaction_styles.css' %}">
+
+<div class="main-container">
+    <!-- Container Protosotry -->
+    <div class="narrative-and-visualization-container">
+        <!-- protosotry Section -->
+        <div class="interactive-narrative-section">
+            <h3>Protostory</h3>
+            <div class="content-output" contenteditable="true">
+                <!-- content -->
+                {% if generated_narrative %}
+                    <p>{{ generated_narrative|safe }}</p>
+                {% else %}
+                    <p>No protostory generated yet.</p>
+                {% endif %}
+            </div>
+            <button id="start-button" type="button">Start the Interaction</button>
+        </div>
+    </div>
+
+    <!--chat Section -->
+    <div class="chat-section">
+        <h2>Interact with the Generated Protostory</h2>
+        <p>In this interface, you can engage with the protostory generated during the meaning making stage. Make choices, explore different paths, and immerse yourself in the story!</p>
+        
+        <div id="chat-box"></div>
+        <input type="text" id="message-input" placeholder="Type a message...">
+        <button id="send-button">Send</button>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        var currentThreadId = null;  // Variable to store the thread ID
+
+        $('#start-button').click(function() {
+            var narrativeContent = $('.content-output').text();  // Get content from the interactive narrative section
+            $.ajax({
+                url: '{% url "interaction" %}',
+                type: 'POST',
+                data: {
+                    'action': 'start_interaction',
+                    'narrative_content': narrativeContent,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                },
+                success: function(data) {
+                    currentThreadId = data.thread_id;  // Store the thread ID
+                    $('#chat-box').html('<div class="message assistant-message">' + data.message + '</div>');
+                },
+                error: function() {
+                    $('#chat-box').append('<div class="message assistant-message">Error starting interaction.</div>');
+                }
+            });
+        });
+
+        $('#send-button').click(function() {
+            var userMessage = $('#message-input').val();
+            if (userMessage.trim() === "") return;
+
+            $('#chat-box').append('<div class="message user-message">You: ' + userMessage + '</div>');
+
+            $.ajax({
+                url: '{% url "interaction" %}',
+                method: 'POST',
+                data: {
+                    'action': 'send_message',
+                    'message': userMessage,
+                    'thread_id': currentThreadId,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                },
+                success: function(data) {
+                    $('#chat-box').append('<div class="message assistant-message">GPT-4: ' + data.message + '</div>');
+                    $('#message-input').val(''); // Clear the input field after sending
+                },
+                error: function() {
+                    $('#chat-box').append('<div class="message assistant-message">Error receiving response.</div>');
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
